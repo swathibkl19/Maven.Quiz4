@@ -7,6 +7,10 @@ public class WordCounter {
     }
 
     public Map<String, Integer> getWordCountMap() {
+
+        //String[] words = WordCounter.string.split(" ");
+
+
         return null;
     }
 }
