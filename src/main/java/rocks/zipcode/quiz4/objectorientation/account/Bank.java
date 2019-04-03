@@ -10,7 +10,7 @@ public class Bank {
     List<BankAccount> mylist =new ArrayList<>();
 
     public BankAccount removeBankAccountByIndex(Integer indexNumber) {
-        mylist.remove(indexNumber);
+        mylist.remove(indexNumber.intValue());
         return null;
     }
 
@@ -21,6 +21,8 @@ public class Bank {
     }
 
     public Boolean containsBankAccount(BankAccount bankAccount) {
-        throw new UnsupportedOperationException("Method not yet implemented");
+         return mylist.contains(bankAccount);
+       // throw new UnsupportedOperationException("Method not yet implemented");
+
     }
 }

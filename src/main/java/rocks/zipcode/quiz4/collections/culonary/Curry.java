@@ -1,6 +1,6 @@
 package rocks.zipcode.quiz4.collections.culonary;
 
-public class Curry implements Spice<Integer> {
+public class Curry extends Spice {
 
     public String getName(){
         return "Spice";

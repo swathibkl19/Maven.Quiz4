@@ -1,6 +1,9 @@
 package rocks.zipcode.quiz4.fundamentals;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author leon on 21/12/2018.
@@ -35,7 +38,7 @@ public class StringUtils {
             return result;
         }
 
-        String result=str.substring(0,i)+str.substring(i,i+1).toLowerCase()+str.substring(i+1);
+        String result = str.substring(0,i)+str.substring(i,i+1).toLowerCase()+str.substring(i+1);
 
         return result;
     }
@@ -44,16 +47,20 @@ public class StringUtils {
 
     public static Boolean isIsogram(String str) {
 
-        str = str.toLowerCase();
-
-        char arr[] = str.toCharArray();
-
-        Arrays.sort(arr);
-        for (int i = 0; i < str.length() - 1; i++) {
-            if (arr[i] == arr[i + 1])
-                return false;
-        }
-        return true;
+//        str = str.toLowerCase();
+//
+//        char arr[] = str.toCharArray();
+//
+//        Arrays.sort(arr);
+//        for (int i = 0; i < str.length() - 1; i++) {
+//            if (arr[i] == arr[i + 1])
+//                return false;
+//        }
+//        return true;
+        String[] array = str.split("");
+        List<String> list = Arrays.asList(array);
+        Set<String> stringSet = new HashSet<>(list);
+        return stringSet.size() == str.length();
     }
 
 
@@ -74,20 +81,42 @@ public class StringUtils {
 
     public static String removeConsecutiveDuplicateCharacters(String str) {
 
-        for (int i = 0; i < str.length() -1; i++) {
-
-            if (str.charAt(i) == str.charAt(i+1)) {
-            char ch1 =str.charAt(i);
-                //char ch2 =str.charAt(i+1);
-
-               String str1 = str.replace("ch1","");
-               //String str2 =str1.replace("ch2","");
-
-                return str1;
-
+//        for (int i = 0; i < str.length() -1 ; i++) {
+//
+//            if (str.charAt(i) == str.charAt(i+1)) {
+//                Character ch1 = str.charAt(i);
+//                Character ch2 =str.charAt(i+1);
+//
+//               String str1 = str.replace(ch1.toString(),"");
+//               String str2 = str1.replace(ch2.toString(),"");
+//
+//                return str2;
+//
+//            }
+////            if(str.charAt(str.length()) != str.charAt(str.length()-1))
+////            {
+////                return str;
+////            }
+//        }
+        StringBuilder sb = new StringBuilder();
+        char[] array = str.toCharArray();
+        for (int i = 0; i < array.length-1; i++) {
+            Character currentCharacter = array[i];
+            Character nextCharacter =array[i+1];
+            if(!currentCharacter.equals(nextCharacter)){
+                sb.append(currentCharacter);
+            }else{
+                i++;
             }
         }
-        return str;
+        int lastIndex = str.length() -1;
+        int secondToLastIndex = str.length()-2;
+        Character lastChar = str.charAt(lastIndex);
+        Character secondToLastChar = str.charAt(secondToLastIndex);
+        if(!lastChar.equals(secondToLastChar)){
+            sb.append(lastChar);
+        }
+        return sb.toString();
     }
 
     public static String invertCasing(String str) {
